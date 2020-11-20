@@ -58,9 +58,4 @@
     </Reference>
   </ItemGroup>
 
-
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="copy &quot;D:\Among Us Modding\Mods\TestMod\PlayablePets\obj\Debug\net472\PlayablePets.dll&quot; &quot;D:\Steam Library\steamapps\common\Among Us\BepInEx\plugins\PlayablePets.dll&quot;&#xD;&#xA;" />
-  </Target>
-
 </Project>
