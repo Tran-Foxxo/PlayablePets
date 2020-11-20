@@ -18,6 +18,7 @@ You can credit me by saying `Playable Pets was created by Tran-Foxxo on github a
 
 ## To-dos 
 
+- [x] Keep the mod up to date. 
 - [ ] Make a itch.io version if the steam version isn't compatible. 
 - [ ] Move name up a bit more for the taller pets.
 - [ ] Maybe a custom sprite for dead pets? (Instead of a crewmate body)
