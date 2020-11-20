@@ -1,7 +1,9 @@
 # Playable Pets
 
 A BepInEx IL2CPP plugin that allows you to play as your pet in Among Us!
-<u>**Note: If you end up using this in a video please credit me.**</u>
+
+### <u>**Note: If you end up using this in a video please credit me.**</u>
+You can credit me by saying `Playable Pets was created by Tran-Foxxo on github at https://github.com/Tran-Foxxo/PlayablePets`
 
 ## Installation 
 
