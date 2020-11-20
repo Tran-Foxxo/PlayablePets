@@ -22,6 +22,6 @@ A BepInEx IL2CPP plugin that allows you to play as your pet in Among Us!
 
 ## Demo
 
-![Gif 1](https://github.com/Tran-Foxxo/PlayablePets/gifs/1.gif)
-![Gif 2](https://github.com/Tran-Foxxo/PlayablePets/gifs/2.gif)
-![Gif 3](https://github.com/Tran-Foxxo/PlayablePets/gifs/3.gif)
+![Gif 1](https://github.com/Tran-Foxxo/PlayablePets/raw/master/gifs/1.gif)
+![Gif 2](https://github.com/Tran-Foxxo/PlayablePets/raw/master/gifs/2.gif)
+![Gif 3](https://github.com/Tran-Foxxo/PlayablePets/raw/master/gifs/3.gif)
