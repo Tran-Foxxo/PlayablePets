@@ -12,6 +12,8 @@ using BepInEx.Configuration;
 /* Among Us types here */
 using PlayerControl = GLHCHLEDNBA;
 using HudManager = KLEKBPLEDOA;
+using LobbyBehaviour = IBNGIHCHBKN;
+using DestroyableSingleton_HudManager_ = LBJBHFDNMCK<KLEKBPLEDOA>;
 
 namespace PlayablePets
 {
@@ -20,8 +22,8 @@ namespace PlayablePets
     public class PlayablePets : BasePlugin
     {
         public const string PluginGuid = "trankampling.playablepets";
-        public const string PluginName = "PlayablePets";
-        public const string PluginVersion = "1.5.0";
+        public const string PluginName = "Playable Pets";
+        public const string PluginVersion = "1.6.0";
 
         public static ManualLogSource _logger = null;
         public static ConfigFile _config = null;
@@ -245,6 +247,33 @@ namespace PlayablePets
             }
         }
 
+        [HarmonyPatch(typeof(LobbyBehaviour), nameof(LobbyBehaviour.FixedUpdate))]
+        public static class Patch_LobbyBehaviour_FixedUpdate
+        {
+            public static void Postfix()
+            {
+                try
+                {
+                    HudManager hudManager = DestroyableSingleton_HudManager_.MJPDBBJAMGG;
+
+                    if (PlayablePets.enabled.Value)
+                    {
+                        if (hudManager != null) //This might be null
+                        {
+                            string creditPleaseDontRemoveThisKThx = $"{PlayablePets.PluginName} v{PlayablePets.PluginVersion} created by @Tran_Foxxo\r\nhttps://github.com/Tran-Foxxo/PlayablePets/\r\n\r\n";
+                            if (!hudManager.GameSettings.Text.Contains(creditPleaseDontRemoveThisKThx))
+                            {
+                                hudManager.GameSettings.Text = creditPleaseDontRemoveThisKThx + hudManager.GameSettings.Text;
+                            }
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    PlayablePets._logger.LogError(e);
+                }
+            }
+        }
 
         //All the spriteanim patches use this function
         public static bool SkipSpriteAnim(SpriteAnim instance)
