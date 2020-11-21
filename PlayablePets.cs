@@ -21,9 +21,9 @@ namespace PlayablePets
     [BepInProcess("Among Us.exe")]
     public class PlayablePets : BasePlugin
     {
-        public const string PluginGuid = "trankampling.playablepets";
+        public const string PluginGuid = "tranfox.playablepets";
         public const string PluginName = "Playable Pets";
-        public const string PluginVersion = "1.6.0";
+        public const string PluginVersion = "1.6.1";
 
         public static ManualLogSource _logger = null;
         public static ConfigFile _config = null;
@@ -278,7 +278,7 @@ namespace PlayablePets
         //All the spriteanim patches use this function
         public static bool SkipSpriteAnim(SpriteAnim instance)
         {
-            if (PlayablePets.enabled.Value)
+            if (PlayablePets.enabled.Value && instance != null) //Make sure this isn't null
             {
                 if (instance.name.Contains(PlayablePets.SpecialName))
                 {
