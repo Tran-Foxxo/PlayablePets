@@ -10,10 +10,10 @@ using System.Collections.Generic;
 using BepInEx.Configuration;
 
 /* Among Us types here */
-using PlayerControl = GLHCHLEDNBA;
-using HudManager = KLEKBPLEDOA;
-using LobbyBehaviour = IBNGIHCHBKN;
-using DestroyableSingleton_HudManager_ = LBJBHFDNMCK<KLEKBPLEDOA>;
+using PlayerControl = PPHGCHMFMLI;
+using HudManager = CHADMJBBIGF;
+using LobbyBehaviour = AHMIHDIAGMN;
+using DestroyableSingleton_HudManager_ = AMLFAEKJFGK<CHADMJBBIGF>;
 
 namespace PlayablePets
 {
@@ -23,7 +23,7 @@ namespace PlayablePets
     {
         public const string PluginGuid = "tranfox.playablepets";
         public const string PluginName = "Playable Pets";
-        public const string PluginVersion = "1.6.1";
+        public const string PluginVersion = "1.7.0";
 
         public static ManualLogSource _logger = null;
         public static ConfigFile _config = null;
@@ -83,8 +83,11 @@ namespace PlayablePets
                 if (pet != null)
                 {
                     var playerID = player.PlayerId;
-                    bool isDead = player.HMPLOOHMKEN.ENDDMNCPFHM;
-                    bool localIsDead = PlayerControl.LocalPlayer.HMPLOOHMKEN.ENDDMNCPFHM;
+                    bool isDead = player.NIMDLCJMLIK.NLIAHHPDMKB;
+                    bool localIsDead = PlayerControl.LocalPlayer.NIMDLCJMLIK.NLIAHHPDMKB;
+
+                    SpriteRenderer playerSpriteRenderer = player.CFNPEOAGHFK;
+                    string playerSpriteName = playerSpriteRenderer.sprite.name;
 
                     if (!animationStartTimes.ContainsKey(playerID))
                     {
@@ -100,7 +103,7 @@ namespace PlayablePets
 
                     pet.animator.name = pet.animator.name.Replace(PlayablePets.SpecialName, ""); //Allow animations to be changed
 
-                    pet.rend.flipX = player.GDCMEAGNAEP.flipX; //Flip pet spriterenderer if needed
+                    pet.rend.flipX = playerSpriteRenderer.flipX; //Flip pet spriterenderer if needed
 
                     if (isDead) //If player is dead
                     {
@@ -130,7 +133,7 @@ namespace PlayablePets
                     }
                     
 
-                    if (player.GDCMEAGNAEP.sprite.name == "idle" && pet.animator.Clip != pet.idleClip)
+                    if (playerSpriteName == "idle" && pet.animator.Clip != pet.idleClip)
                     {
                         pet.animator.Play(pet.idleClip);
                         //_logger.LogMessage("Idle Alive");
@@ -142,7 +145,7 @@ namespace PlayablePets
                         //_logger.LogMessage("Idle Ghost");
                         animationStartTimes[playerID] = Time.unscaledTime;
                     }
-                    else if (player.GDCMEAGNAEP.sprite.name.Contains("walk") && pet.animator.Clip != pet.walkClip)
+                    else if (playerSpriteName.Contains("walk") && pet.animator.Clip != pet.walkClip)
                     {
                         pet.animator.Play(pet.walkClip);
                         //_logger.LogMessage("Walk Alive");
@@ -209,9 +212,11 @@ namespace PlayablePets
 
         private static void setupPlayerColors(PlayerControl player, Color c)
         {
-            if (player.GDCMEAGNAEP != null)
+            SpriteRenderer playerSpriteRenderer = player.CFNPEOAGHFK;
+
+            if (playerSpriteRenderer != null)
             {
-                player.GDCMEAGNAEP.color = c;
+                playerSpriteRenderer.color = c;
             }
             if (player.HatRenderer != null)
             {
@@ -254,7 +259,7 @@ namespace PlayablePets
             {
                 try
                 {
-                    HudManager hudManager = DestroyableSingleton_HudManager_.MJPDBBJAMGG;
+                    HudManager hudManager = DestroyableSingleton_HudManager_.PCNCGHNLDMP;
 
                     if (PlayablePets.enabled.Value)
                     {
