@@ -1,6 +1,6 @@
 # Playable Pets
 
-A BepInEx IL2CPP plugin that allows you to play as your pet in Among Us (Working as of version v2020.11.17s)!
+A BepInEx IL2CPP plugin that allows you to play as your pet in Among Us (Working as of version v2020.11.17s part 1)!
 
 ## <u>**Note: If you end up using this in a video please credit me.**</u>
 ### You can credit me by saying `Playable Pets was created by Tran-Foxxo on github at https://github.com/Tran-Foxxo/PlayablePets`
@@ -18,7 +18,7 @@ A BepInEx IL2CPP plugin that allows you to play as your pet in Among Us (Working
 
 ## To-dos 
 
-- [x] Keep the mod up to date. 
+- [ ] Keep the mod up to date. 
 - [ ] Make a itch.io version if the steam version isn't compatible. 
 - [ ] Move name up a bit more for the taller pets.
 - [ ] Maybe a custom sprite for dead pets? (Instead of a crewmate body)
