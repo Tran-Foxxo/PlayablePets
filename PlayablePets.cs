@@ -10,10 +10,10 @@ using System.Collections.Generic;
 using BepInEx.Configuration;
 
 /* Among Us types here */
-using PlayerControl = PPHGCHMFMLI;
-using HudManager = CHADMJBBIGF;
-using LobbyBehaviour = AHMIHDIAGMN;
-using DestroyableSingleton_HudManager_ = AMLFAEKJFGK<CHADMJBBIGF>;
+using PlayerControl = JENJGDMOEOC;
+using HudManager = PINEMJODMGE;
+using LobbyBehaviour = AGGGBFEOPAH;
+using DestroyableSingleton_HudManager_ = AEAFJOOEIIH<PINEMJODMGE>;
 
 namespace PlayablePets
 {
@@ -23,7 +23,7 @@ namespace PlayablePets
     {
         public const string PluginGuid = "tranfox.playablepets";
         public const string PluginName = "Playable Pets";
-        public const string PluginVersion = "1.7.0";
+        public const string PluginVersion = "1.8.0";
 
         public static ManualLogSource _logger = null;
         public static ConfigFile _config = null;
@@ -83,10 +83,10 @@ namespace PlayablePets
                 if (pet != null)
                 {
                     var playerID = player.PlayerId;
-                    bool isDead = player.NIMDLCJMLIK.NLIAHHPDMKB;
-                    bool localIsDead = PlayerControl.LocalPlayer.NIMDLCJMLIK.NLIAHHPDMKB;
+                    bool isDead = player.KLHEPLOPKKN.OKDGIIGNNMG;
+                    bool localIsDead = PlayerControl.LocalPlayer.KLHEPLOPKKN.OKDGIIGNNMG;
 
-                    SpriteRenderer playerSpriteRenderer = player.CFNPEOAGHFK;
+                    SpriteRenderer playerSpriteRenderer = player.NJAHBOPJLAD;
                     string playerSpriteName = playerSpriteRenderer.sprite.name;
 
                     if (!animationStartTimes.ContainsKey(playerID))
@@ -212,7 +212,7 @@ namespace PlayablePets
 
         private static void setupPlayerColors(PlayerControl player, Color c)
         {
-            SpriteRenderer playerSpriteRenderer = player.CFNPEOAGHFK;
+            SpriteRenderer playerSpriteRenderer = player.NJAHBOPJLAD;
 
             if (playerSpriteRenderer != null)
             {
@@ -259,7 +259,7 @@ namespace PlayablePets
             {
                 try
                 {
-                    HudManager hudManager = DestroyableSingleton_HudManager_.PCNCGHNLDMP;
+                    HudManager hudManager = DestroyableSingleton_HudManager_.AEDOOFIAPOA; //Get method of type <T>
 
                     if (PlayablePets.enabled.Value)
                     {
