@@ -10,11 +10,12 @@ A BepInEx IL2CPP plugin that allows you to play as your pet in Among Us (Working
 1. Download the latest BepInEx IL2CPP x86 .zip from https://builds.bepis.io/projects/bepinex_be.
 2. Right click Among Us in Steam.  Go to manage, then browse local files.
 3. Extract the .zip into this folder so the folder structure has `\Among Us\BepInEx\`.
-4. Run the game through steam and exit when it's fully loaded, this will create directories / files needed for the mod. (This might take a while.)
-5. Download the latest release at https://github.com/Tran-Foxxo/PlayablePets/releases.
-6. Put the downloaded .dll into `\Among Us\BepInEx\plugins\`.
-7. Run the game and use a pet that you own and you'll become the pet!
-8. (Optional) Change the configs in `\Among Us\BepInEx\config\trankampling.playablepets.cfg` to your liking.
+4. Download the Unity dependencies for this mod (2020.4.9.zip) from [here](https://github.com/HerpDerpinstine/MelonLoader/tree/master/BaseLibs/UnityDependencies) and place them in `\Among Us\BepInEx\unhollowed\base\` (you might need to create this folder).
+5. Run the game through steam and exit when it's fully loaded, this will create directories / files needed for the mod. (This might take a while.)
+6. Download the latest release at https://github.com/Tran-Foxxo/PlayablePets/releases.
+7. Put the downloaded .dll into `\Among Us\BepInEx\plugins\`.
+8. Run the game and use a pet that you own and you'll become the pet!
+9. (Optional) Change the configs in `\Among Us\BepInEx\config\trankampling.playablepets.cfg` to your liking.
 
 ## To-dos 
 
