@@ -3,23 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayablePets", "PlayablePets.csproj", "{94996341-F9C2-49B1-A359-59AD22175197}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayablePets", "PlayablePets.csproj", "{26F823F7-1E10-4290-BC5A-85FE6EBAD611}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
+		Itch-Debug|Any CPU = Itch-Debug|Any CPU
+		Itch-Release|Any CPU = Itch-Release|Any CPU
+		Steam-Debug|Any CPU = Steam-Debug|Any CPU
+		Steam-Release|Any CPU = Steam-Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{94996341-F9C2-49B1-A359-59AD22175197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94996341-F9C2-49B1-A359-59AD22175197}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94996341-F9C2-49B1-A359-59AD22175197}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94996341-F9C2-49B1-A359-59AD22175197}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F823F7-1E10-4290-BC5A-85FE6EBAD611}.Itch-Debug|Any CPU.ActiveCfg = Itch-Debug|Any CPU
+		{26F823F7-1E10-4290-BC5A-85FE6EBAD611}.Itch-Debug|Any CPU.Build.0 = Itch-Debug|Any CPU
+		{26F823F7-1E10-4290-BC5A-85FE6EBAD611}.Itch-Release|Any CPU.ActiveCfg = Itch-Release|Any CPU
+		{26F823F7-1E10-4290-BC5A-85FE6EBAD611}.Itch-Release|Any CPU.Build.0 = Itch-Release|Any CPU
+		{26F823F7-1E10-4290-BC5A-85FE6EBAD611}.Steam-Debug|Any CPU.ActiveCfg = Steam-Debug|Any CPU
+		{26F823F7-1E10-4290-BC5A-85FE6EBAD611}.Steam-Debug|Any CPU.Build.0 = Steam-Debug|Any CPU
+		{26F823F7-1E10-4290-BC5A-85FE6EBAD611}.Steam-Release|Any CPU.ActiveCfg = Steam-Release|Any CPU
+		{26F823F7-1E10-4290-BC5A-85FE6EBAD611}.Steam-Release|Any CPU.Build.0 = Steam-Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {10C5729D-AE62-48EB-BFC1-BDF15F13978E}
+		SolutionGuid = {F05462BF-51B5-4B43-BC55-CA11D510B473}
 	EndGlobalSection
 EndGlobal

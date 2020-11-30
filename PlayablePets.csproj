@@ -1,61 +1,81 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PlayablePets</RootNamespace>
+    <AssemblyName>PlayablePets</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <ProjectGuid>{26F823F7-1E10-4290-BC5A-85FE6EBAD611}</ProjectGuid>
   </PropertyGroup>
-
-
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Steam-Release|AnyCPU' ">
+    <OutputPath>bin\Steam-Release\</OutputPath>
+    <DefineConstants>TRACE;STEAM</DefineConstants>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Itch-Release|AnyCPU' ">
+    <OutputPath>bin\Itch-Release\</OutputPath>
+    <DefineConstants>TRACE;ITCH</DefineConstants>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Itch-Debug|AnyCPU'">
+    <OutputPath>bin\Itch-Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ITCH</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Steam-Debug|AnyCPU' ">
+    <OutputPath>bin\Steam-Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;STEAM</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\core\0Harmony.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\Among Us\BepInEx\core\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp-Steam" Condition=" '$(Configuration)' == 'Steam-Debug' Or '$(Configuration)' == 'Steam-Release'">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Among Us\BepInEx\unhollowed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\Assembly-CSharp-firstpass.dll</HintPath>
+    <Reference Include="Assembly-CSharp-Itch" Condition=" '$(Configuration)' == 'Itch-Debug' Or '$(Configuration)' == 'Itch-Release'">
+      <HintPath>..\..\..\..\..\..\Games\among-us-windows\AmongUs\BepInEx\unhollowed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
     </Reference>
-    <Reference Include="BepInEx.Core">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\core\BepInEx.Core.dll</HintPath>
+    <Reference Include="BepInEx.Core, Version=6.0.0.294, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\Among Us\BepInEx\core\BepInEx.Core.dll</HintPath>
     </Reference>
     <Reference Include="BepInEx.IL2CPP">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\core\BepInEx.IL2CPP.dll</HintPath>
-    </Reference>
-    <Reference Include="Il2CppMono.Security">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\Il2CppMono.Security.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\Among Us\BepInEx\core\BepInEx.IL2CPP.dll</HintPath>
     </Reference>
     <Reference Include="Il2Cppmscorlib">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\Il2Cppmscorlib.dll</HintPath>
-    </Reference>
-    <Reference Include="Il2CppSystem">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\Il2CppSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="Il2CppSystem.Configuration">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\Il2CppSystem.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Il2CppSystem.Core">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\Il2CppSystem.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Il2CppSystem.Xml">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\Il2CppSystem.Xml.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\Among Us\BepInEx\unhollowed\Il2Cppmscorlib.dll</HintPath>
     </Reference>
     <Reference Include="UnhollowerBaseLib">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\UnhollowerBaseLib.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\Among Us\BepInEx\core\UnhollowerBaseLib.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\Among Us\BepInEx\unhollowed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\Among Us\BepInEx\unhollowed\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\Among Us\BepInEx\unhollowed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\UnityEngine.Physics2DModule.dll</HintPath>
+      <HintPath>..\..\Program Files (x86)\Steam\steamapps\common\Among Us\BepInEx\unhollowed\UnityEngine.Physics2DModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\Steam Library\steamapps\common\Among Us\BepInEx\unhollowed\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\Among Us\BepInEx\unhollowed\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
-
+  <ItemGroup>
+    <Compile Include="PlayablePets.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

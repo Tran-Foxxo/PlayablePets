@@ -10,10 +10,17 @@ using System.Collections.Generic;
 using BepInEx.Configuration;
 
 /* Among Us types here */
+#if STEAM
 using PlayerControl = JENJGDMOEOC;
 using HudManager = PINEMJODMGE;
 using LobbyBehaviour = AGGGBFEOPAH;
 using DestroyableSingleton_HudManager_ = AEAFJOOEIIH<PINEMJODMGE>;
+#elif ITCH
+using PlayerControl = ELIOALIOPDI;
+using HudManager = NCPDOOIHJKC;
+using LobbyBehaviour = LJCPGBCNKNB;
+using DestroyableSingleton_HudManager_ = HDGPMLBOCCA<NCPDOOIHJKC>;
+#endif
 
 namespace PlayablePets
 {
@@ -23,7 +30,17 @@ namespace PlayablePets
     {
         public const string PluginGuid = "tranfox.playablepets";
         public const string PluginName = "Playable Pets";
-        public const string PluginVersion = "1.8.0";
+        public const string PluginVersion = "2.0.0";
+
+#if (STEAM && DEBUG)
+        public const string VersionEnding = "s [FF0000FF]DEBUG[FFFFFFFF]";
+#elif (STEAM && !DEBUG)
+        public const string VersionEnding = "s";
+#elif (ITCH && DEBUG)
+        public const string VersionEnding = "i [FF0000FF]DEBUG[FFFFFFFF]";
+#elif (ITCH && !DEBUG)
+        public const string VersionEnding = "i";
+#endif
 
         public static ManualLogSource _logger = null;
         public static ConfigFile _config = null;
@@ -54,6 +71,34 @@ namespace PlayablePets
             harmony.PatchAll(Assembly.GetExecutingAssembly());
         }
 
+        #region Steam/Itch functions
+        public static bool PlayerIsDead(PlayerControl player)
+        {
+            #if STEAM
+            return player.KLHEPLOPKKN.OKDGIIGNNMG;
+            #elif ITCH
+            return player.IKPKBJLJACF.NBFCEPBDFBJ;
+            #endif
+        }
+        public static SpriteRenderer getPlayerSpriteRenderer(PlayerControl player)
+        {
+            #if STEAM
+            return player.NJAHBOPJLAD;
+            #elif ITCH
+            return player.LPFHCDOBAMN;
+            #endif
+        }
+        public static HudManager getHudManager()
+        {
+            //Get method of type <T>
+            #if STEAM
+            return DestroyableSingleton_HudManager_.AEDOOFIAPOA;
+            #elif ITCH
+            return DestroyableSingleton_HudManager_.OGHGLHNJPBL;
+            #endif
+        }
+        #endregion
+
         public static void UpdatePets()
         {
             if (PlayablePets.onlyLocalPlayer.Value)
@@ -83,10 +128,9 @@ namespace PlayablePets
                 if (pet != null)
                 {
                     var playerID = player.PlayerId;
-                    bool isDead = player.KLHEPLOPKKN.OKDGIIGNNMG;
-                    bool localIsDead = PlayerControl.LocalPlayer.KLHEPLOPKKN.OKDGIIGNNMG;
-
-                    SpriteRenderer playerSpriteRenderer = player.NJAHBOPJLAD;
+                    bool isDead = PlayerIsDead(player);
+                    bool localIsDead = PlayerIsDead(PlayerControl.LocalPlayer);
+                    SpriteRenderer playerSpriteRenderer = getPlayerSpriteRenderer(player);
                     string playerSpriteName = playerSpriteRenderer.sprite.name;
 
                     if (!animationStartTimes.ContainsKey(playerID))
@@ -212,7 +256,7 @@ namespace PlayablePets
 
         private static void setupPlayerColors(PlayerControl player, Color c)
         {
-            SpriteRenderer playerSpriteRenderer = player.NJAHBOPJLAD;
+            SpriteRenderer playerSpriteRenderer = getPlayerSpriteRenderer(player);
 
             if (playerSpriteRenderer != null)
             {
@@ -259,13 +303,12 @@ namespace PlayablePets
             {
                 try
                 {
-                    HudManager hudManager = DestroyableSingleton_HudManager_.AEDOOFIAPOA; //Get method of type <T>
-
+                    HudManager hudManager = PlayablePets.getHudManager();
                     if (PlayablePets.enabled.Value)
                     {
                         if (hudManager != null) //This might be null
                         {
-                            string creditPleaseDontRemoveThisKThx = $"{PlayablePets.PluginName} v{PlayablePets.PluginVersion} created by @Tran_Foxxo\r\nhttps://github.com/Tran-Foxxo/PlayablePets/\r\n\r\n";
+                            string creditPleaseDontRemoveThisKThx = $"{PlayablePets.PluginName} v{PlayablePets.PluginVersion}{PlayablePets.VersionEnding} Created by [00AAFFFF]@Tran_Foxxo[FFFF00FF]\r\nhttps://github.com/Tran-Foxxo/PlayablePets/\r\n\r\n[FFFFFFFF]";
                             if (!hudManager.GameSettings.Text.Contains(creditPleaseDontRemoveThisKThx))
                             {
                                 hudManager.GameSettings.Text = creditPleaseDontRemoveThisKThx + hudManager.GameSettings.Text;
